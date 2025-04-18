@@ -54,4 +54,12 @@ class Chat extends Model
     {
         return $this->hasMany(User::class, 'chat_id', 'id');
     }
+
+    /**
+     * Последнее сообщение в чате.
+     */
+    public function lastMessage(): BelongsTo
+    {
+        return $this->belongsTo(Message::class, 'last_message_id');
+    }
 }

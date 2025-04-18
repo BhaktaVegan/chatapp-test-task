@@ -11,7 +11,7 @@ use App\Modules\User\Repositories\UserRepository;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Модель сообщения часа.
+ * Сервис авторизации.
  */
 final class AuthLoginService
 {
@@ -24,7 +24,7 @@ final class AuthLoginService
     }
 
     /**
-     * Run service.
+     * Запуск сервиса.
      *
      * @throws InvalidCredentialsException
      * @throws UserNotFoundException
