@@ -32,6 +32,7 @@ docker exec -it laravel_app bash
 
 ```bash
 composer install
+php artisan key:generate
 ```
 
 ---
