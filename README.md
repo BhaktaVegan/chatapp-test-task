@@ -9,8 +9,8 @@
 ## 📁 Клонирование репозитория
 
 ```bash
-git clone https://github.com/your-username/chatapp.git
-cd chatapp
+git clone git@github.com:BhaktaVegan/chatapp-test-task.git
+cd chatapp-test-task
 cp .env.example .env
 ```
 
