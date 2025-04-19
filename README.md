@@ -6,6 +6,16 @@
 
 ## 🚀 Шаги по деплою
 
+## 📁 Клонирование репозитория
+
+```bash
+git clone https://github.com/your-username/chatapp.git
+cd chatapp
+cp .env.example .env
+```
+
+---
+
 ### 📦 Сборка контейнеров
 
 ```bash
