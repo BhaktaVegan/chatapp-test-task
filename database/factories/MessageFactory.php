@@ -28,8 +28,6 @@ final class MessageFactory extends Factory
     {
         return [
             'chat_id' => Chat::factory(),
-            'sender_id' => User::factory(),
-            'recipient_id' => User::factory(),
             'message' => $this->faker->sentence(rand(20, 300)),
         ];
     }

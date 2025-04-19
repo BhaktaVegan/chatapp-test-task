@@ -14,6 +14,6 @@ final class SearchChatDto extends ChatDto
      */
     public function rules(): array
     {
-        parent::rules();
+        return parent::rules();
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Resources\User\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 /**
  * Ресурс чата.
@@ -29,8 +30,12 @@ final class ChatResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'last_message_text' => Str::limit($this->lastMessage, self::MESSAGE_CHARS_LIMIT),
-            'last_message_created_at' => $this->lastMessage->created_at,
+            'last_message_text' => Str::limit(
+                $this->lastMessage->message,
+                self::MESSAGE_CHARS_LIMIT
+            ),
+            'last_message_created_at' => Carbon::create($this->lastMessage->created_at)
+                ->format('Y-m-d H:i:s'),
             'creator' => UserResource::make($this->creator),
         ];
     }

@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Requests\Chat;
 
 use App\Modules\Chat\Dtos\SearchChatDto;
-use App\Rules\PhoneNumber;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 /**
  * Запрос для получения чатов.
@@ -44,8 +42,8 @@ final class IndexChatRequest extends FormRequest
     {
         return app()->make(SearchChatDto::class, ['data' =>
             [
-                'page' => $this->input('page'),
-                'items_per_page' => $this->input('items_per_page'),
+                'page' => (int) $this->input('page'),
+                'items_per_page' => (int) $this->input('items_per_page'),
             ]
         ]);
     }

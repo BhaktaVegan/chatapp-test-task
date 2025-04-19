@@ -30,6 +30,6 @@ final class IndexChatService
 
         return $this->chatRepository
             ->searchChatsBuilder()
-            ->paginate($data['itemsPerPage'], ['*'], 'page', $data['page']);
+            ->paginate($data['items_per_page'], ['*'], 'page', $data['page']);
     }
 }

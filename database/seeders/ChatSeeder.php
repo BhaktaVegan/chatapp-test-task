@@ -24,20 +24,28 @@ final class ChatSeeder extends Seeder
             ->pluck('id')
             ->toArray();
 
-        Chat::factory()->count(100)->create()->each(function ($chat) use ($userIds) {
+        Chat::factory()->count(100)->create()->each(function (Chat $chat) use ($userIds) {
             $messageCount = rand(10, 100);
+            $messages = collect();
 
             for ($i = 0; $i < $messageCount; $i++) {
                 $sender = collect($userIds)->random();
-                $recipient = collect($userIds)->reject(fn ($id) => $id === $sender)->random();
+                $recipient = collect($userIds)->reject(fn ($id) => $id === $sender)
+                    ->random();
 
-                Message::factory()->create([
+                $messages->push(Message::factory()->create([
                     'chat_id' => $chat->id,
                     'sender_id' => $sender,
                     'recipient_id' => $recipient,
                     'message' => Str::random(rand(20, 300)),
-                ]);
+                    'created_at' => now()->subDays(rand(0, 30))
+                        ->addMinutes(rand(0, 1440)),
+                ]));
             }
+
+            $lastMessage = $messages->sortByDesc('created_at')
+                ->first();
+            $chat->update(['last_message_id' => $lastMessage->id]);
         });
     }
 }
