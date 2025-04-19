@@ -49,7 +49,9 @@ php artisan db:seed
 ```
 
 > ⚠️ Для запуска тестов необходимо создать базу данных `chatapp_testing`  
-> и применить к ней миграции:
+> Применить команду `GRANT ALL PRIVILEGES ON chatapp_testing.* TO 'default'@'%';` для выдачи прав
+> и применить к ней миграции
+
 
 ```bash
 php artisan migrate --env=testing
